@@ -1,0 +1,14 @@
+{
+  "name": "cordova-audio-manager",
+  "version": "0.0.1",
+  "description": "Cordova plugin for audio manager ( Android only )",
+  "cordova": {
+    "id": "cordova-audio-manager",
+    "platforms": ["android"]
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "",
+  "license": "ISC"
+}

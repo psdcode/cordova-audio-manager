@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+   id="br.com.fansilva.systemvolume"
+   version="0.0.1">
+    <name>System Volume</name>
+    <description>Cordova Audio Manager Plugin</description>
+    <license>MIT</license>
+    <keywords>codrova,volume</keywords>
+    <repo>https://github.com/fansilva1991/cordova-audio-manager</repo>
+
+    <js-module src="www/systemvolume.js" name="SystemVolume">
+        <clobbers target="window.system" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="SystemVolume">
+                <param name="android-package" value="br.com.fansilva.systemvolume.SystemVolume"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/SystemVolume.java" target-dir="src/br/com/fansilva/systemvolume" />     
+
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+       </config-file>
+        
+    </platform>          
+    
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="android.permission.VIBRATE"/>
+    </config-file>
+</plugin>
