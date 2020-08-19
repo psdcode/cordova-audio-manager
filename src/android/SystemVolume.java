@@ -27,6 +27,12 @@ public class SystemVolume extends CordovaPlugin {
 			this.setMusicVolume(args.getDouble(0));
 		}  else if(action.equals("setAccessibilityVolume")) {
 			this.setAccessibilityVolume(args.getDouble(0));
+		}  else if(action.equals("setRingerMode")) {
+			this.setRingerMode(args.getInt(0));	
+		}  else if(action.equals("getRingerMode")) {
+			int mode = this.getRingerMode()
+			callbackContext.success()
+			return mode;	
 		}  else {
 			return false;
 		}
@@ -98,6 +104,22 @@ public class SystemVolume extends CordovaPlugin {
 			AudioManager.STREAM_ACCESSIBILITY,
 			(int) (am.getStreamMaxVolume(AudioManager.STREAM_ACCESSIBILITY) * volume),
 			0);
+	}
+
+	public void setRingerMode(int mode) {
+		AudioManager am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
+
+		Log.d("SystemVolume", "Setting Ringer Mode");
+
+		am.setRingerMode(mode);
+	}
+
+	public int getRingerMode() {
+		AudioManager am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
+
+		Log.d("SystemVolume", "Getting Ringer Mode");
+
+		return am.getRingerMode();
 	}
 
 }
